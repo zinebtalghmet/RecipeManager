@@ -42,13 +42,13 @@
                 <!-- Prompt content textarea -->
                 <div class="add-field add-field-full">
                     <label class="add-label">Ingrédients</label>
-                    <textarea name="content" class="add-textarea" placeholder="// Écrivez votre ingrédients ici..."></textarea>
+                    <textarea name="ingredients" class="add-textarea" placeholder="// Écrivez votre ingrédients ici..."></textarea>
                     <label class="add-label">Instructions</label>
-                    <input type="text" name="title" placeholder="// Écrivez votre instructions ici..." class="add-input">
+                    <input type="text" name="instructions" placeholder="// Écrivez votre instructions ici..." class="add-input">
                     <label class="add-label">Tempte de préparation</label>
-                    <input type="text" name="title" placeholder="// Écrivez votre Tempte de préparation ici..." class="add-input">
+                    <input type="text" name="time" placeholder="// Écrivez votre Tempte de préparation ici..." class="add-input">
                     <label class="add-label">Portions</label>
-                    <input type="text" name="title" placeholder="// Écrivez votre Portions ici..." class="add-input">
+                    <input type="text" name="portions" placeholder="// Écrivez votre Portions ici..." class="add-input">
                 </div>
 
                 <!-- Actions: Cancel + Save -->

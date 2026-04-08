@@ -58,12 +58,19 @@ class Recipe {
 
         $sql = 'SELECT recipes.*, categories.name AS categorie 
                 FROM recipes
-                INNER JOIN categories ON recipes.cat_id = categories.id
+                LEFT JOIN categories ON recipes.cat_id = categories.id
                 ORDER BY recipes.created_at DESC';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $cat_id){
+        $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, cat_id)
+                VALUE ( ?,?,?,?,?,?)';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$title, $cat_id, $ingredients, $instructions, $time, $portions]);
     }
 }
 ?>
