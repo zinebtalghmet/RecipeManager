@@ -10,24 +10,11 @@ class RecipeController {
     }
 
     public function index(){
-        session_start();
-
-        if(!isset($_SESSION['user_id'])){
-            header('Location: index.php');
-            exit();
-        }
         $recipes = $this->recipeModel->getAllRecipe();
         require_once __DIR__ .'/../Views/user/dashboard.php';
     }
 
     public function createRecipe(){
-        session_start();
-
-        if(!isset($_SESSION['user_id'])){
-            header('Location: index.php');
-            exit();
-        }
-
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             $title = $_POST['title'];
