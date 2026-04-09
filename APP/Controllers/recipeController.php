@@ -26,7 +26,7 @@ class RecipeController {
 
             $this->recipeModel->creatRecipe($title, $category, $ingredients, $instructions, $time, $portions);
 
-            header('Location: index.php');
+            header('Location: dashboard.php');
             exit();
         }
         require_once __DIR__ .'/../Views/user/addRecipe.php';
