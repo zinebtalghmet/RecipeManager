@@ -9,8 +9,6 @@ CREATE TABLE users (
 CREATE TABLE categories (
     id int PRIMARY KEY AUTO_INCREMENT,
     name varchar(50),
-    user_id varchar(100),
-    FOREIGN KEY (user_id) REFERENCES users (id)
 )
 
 

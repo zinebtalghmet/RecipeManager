@@ -80,7 +80,7 @@
                                     <td><strong><?= htmlspecialchars($c['name']) ?></strong></td>
                                     <td>
                                         <div class="admin-row-actions">
-                                            <a href="admin.php?delete_cat=<?= $c['id'] ?>"
+                                            <a href="addRecipe.php?delete_cat=<?= $c['id'] ?>"
                                                 onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?')"
                                                 class="admin-action-delete">Supprimer</a>
                                         </div>
