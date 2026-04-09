@@ -66,20 +66,11 @@ class Recipe {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-<<<<<<< HEAD
-    // Créer recipe jdida — daba kay-sauvegarder 7ta user_id + l'ordre dyal params s7i7
-    public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $cat_id, $user_id){
-        $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, cat_id, user_id)
-                VALUE ( ?,?,?,?,?,?,?)';
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $cat_id, $user_id]);
-=======
     public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id){
         $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, user_id, cat_id)
                 VALUE ( ?,?,?,?,?,?,?)';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
->>>>>>> e8f9d2f6467d92eaa3d985ca9f62a8bc12e351de
     }
 }
 ?>
