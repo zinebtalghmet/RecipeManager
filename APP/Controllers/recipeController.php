@@ -30,14 +30,17 @@ class RecipeController {
         }
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
             $title = $_POST['title'];
-            $category = $_POST['category_id'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
             $time = $_POST['time'];
             $portions = $_POST['portions'];
+            $user_id = $_SESSION['user_id'];
+            $category = $_POST['category_id'];
 
-            $this->recipeModel->creatRecipe($title, $category, $ingredients, $instructions, $time, $portions);
+
+            $this->recipeModel->creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $category);
 
             header('Location: dashboard.php');
             exit();

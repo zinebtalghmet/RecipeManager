@@ -66,11 +66,11 @@ class Recipe {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $cat_id){
-        $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, cat_id)
-                VALUE ( ?,?,?,?,?,?)';
+    public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id){
+        $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, user_id, cat_id)
+                VALUE ( ?,?,?,?,?,?,?)';
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$title, $cat_id, $ingredients, $instructions, $time, $portions]);
+        $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
     }
 }
 ?>
