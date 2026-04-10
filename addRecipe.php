@@ -12,5 +12,6 @@ $cats = $catController->getAllCategories(); // Charger categories l dropdown
 // === Recipe operations ===
 $recipe = new RecipeController();
 $recipe->createRecipe();
+require_once __DIR__ .'/APP/Views/user/addRecipe.php';
 
 ?>

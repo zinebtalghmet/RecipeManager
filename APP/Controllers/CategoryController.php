@@ -37,7 +37,7 @@ class CategoryController {
     // Jib ga3 les categories — kayrje3 tableau dyal categories bach yt-afficha f dropdown
     public function getAllCategories(){
         $cats = $this->categoryModel->getAllCategories();
-        require_once __DIR__ .'/../Views/user/addRecipe.php';
+        //require_once __DIR__ .'/../Views/user/addRecipe.php';
 
     }
 }
