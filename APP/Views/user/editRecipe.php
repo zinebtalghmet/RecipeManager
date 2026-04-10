@@ -22,12 +22,12 @@
             </div>
 
             <form method="POST" class="add-form">
-                <input type="hidden" name="id" value="<?php echo $recipe['id'];?> "
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($recipe['id']);?> ">
                 <div class="add-row">
                     <div class="add-field">
                         <label class="add-label">Titre</label>
                         <input type="text" name="title"
-                               value="<?php echo $recipe['title']; ?>"
+                               value="<?php echo htmlspecialchars($recipe['title']); ?>"
                                placeholder="le titre"
                                class="add-input">
                     </div>
@@ -36,9 +36,9 @@
                         <select name="category_id" class="add-select">
                             <option value="">Selectionner une catégorie</option>
                             <?php foreach ($cats as $c) { ?>
-                                <option value="<?php echo $c['id']; ?>"
-                                    <?php if($c['id']==$recipe['cat_id']) echo 'selected';?>>
-                                    <?php echo htmlspecialchars($c['name']); ?>>
+                                <option value="<?php echo htmlspecialchars($c['id']); ?>"
+                                    <?php if($c['id']== $recipe['cat_id']) echo 'selected';?>>
+                                    <?php echo htmlspecialchars($c['name']); ?> 
                                 </option>
                             <?php } ?>
                         </select>

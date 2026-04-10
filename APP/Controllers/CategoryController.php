@@ -13,14 +13,19 @@ class CategoryController {
         $this->categoryModel = new Category();
     }
 
+    public function index(){
+    $cats = $this->categoryModel->getAllCategories();
+    require_once __DIR__ . '/../Views/user/categories.php';
+}
+
     // Ajouter categorie jdida — kayt-appela mn formulaire POST f addRecipe.php
     public function addCategory(){
-        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_category'])){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $cat_name = trim($_POST['cat_name']); // 7yed les espaces mn l'début o la fin
-            if(!empty($name)){
-                $this->categoryModel->addCategory($name); // Sauvegarder f la base de données
+            if(!empty($cat_name)){
+                $this->categoryModel->addCategory($cat_name); // Sauvegarder f la base de données
             }
-            header('Location: addRecipe.php'); // Rje3 l page addRecipe
+            header('Location: category.php'); // Rje3 l page addRecipe
             exit();
         }
     }
@@ -29,16 +34,14 @@ class CategoryController {
     public function deleteCategory(){
         if(isset($_GET['delete_cat'])){
             $this->categoryModel->deleteCategory($_GET['delete_cat']); // 7yed mn la base
-            header('Location: addRecipe.php'); // Rje3 l page addRecipe
+            header('Location: category.php'); // Rje3 l page addRecipe
             exit();
         }
     }
 
     // Jib ga3 les categories — kayrje3 tableau dyal categories bach yt-afficha f dropdown
-    public function getAllCategories(){
-        $cats = $this->categoryModel->getAllCategories();
-        //require_once __DIR__ .'/../Views/user/addRecipe.php';
-
+   public function getAllCategories(){
+    return $this->categoryModel->getAllCategories();
     }
 }
 ?>

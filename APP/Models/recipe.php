@@ -68,17 +68,17 @@ class Recipe {
 
     public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id){
         $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, user_id, cat_id)
-                VALUE ( ?,?,?,?,?,?,?)';
+                VALUES ( ?,?,?,?,?,?,?)';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
     }
 
-        public function getRecipeById($id){
-            $sql='SELECT * FROM recipes WHERE id = ?';
-            $stmt=$this->conn->prepare($sql);
-            $stmt->execute([$id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        }
+    public function getRecipeById($id){
+        $sql='SELECT * FROM recipes WHERE id = ?';
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 
 
@@ -89,38 +89,6 @@ class Recipe {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $cat_id,$id]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     public function delete($id){
         $sql = 'DELETE FROM recipes
                 WHERE id = ?';
