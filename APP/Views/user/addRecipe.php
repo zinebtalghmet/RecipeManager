@@ -20,6 +20,10 @@
                 <h1 class="add-title">Créer une nouvelle Recette</h1>
             </div>
 
+            <div class="dash-header">
+                <a href="category.php" class="btn-add">+ Ajouter une Categorie</a>
+            </div>
+
             <form method="POST" class="add-form" action="">
 
                 <div class="add-row">
@@ -52,59 +56,11 @@
 
                 <!-- Actions: Cancel + Save -->
                 <div class="add-actions">
-                    <a href="index.php" class="btn-cancel">Annuler</a>
+                    <a href="dashboard.php" class="btn-cancel">Annuler</a>
                     <button type="submit" class="btn-save">Ajouter</button>
                 </div>
 
             </form>
-        </div>
-
-        <div class="admin-cols">
-
-            <div class="admin-col-main">
-                <div class="admin-section-card">
-                    <div class="admin-section-header">
-                        <h2 class="admin-section-title">Gestion des Catégories</h2>
-                    </div>
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Nom de la Catégorie</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($cats as $c): ?>
-                                <tr>
-                                    <td><strong><?= htmlspecialchars($c['name']) ?></strong></td>
-                                    <td>
-                                        <div class="admin-row-actions">
-                                            <a href="admin.php?delete_cat=<?= $c['id'] ?>"
-                                                onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie ?')"
-                                                class="admin-action-delete">Supprimer</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="admin-col-side">
-
-                <!-- Add category form -->
-                <div class="admin-section-card">
-                    <h3 class="admin-form-title">Ajouter une catégorie</h3>
-                    <form method="POST" class="admin-add-form">
-                        <label class="admin-add-label">Nom de la Catégorie</label>
-                        <input type="text" name="cat_name" placeholder="ex: Entrées" class="admin-add-input">
-                        <button type="submit" name="add_category" class="admin-add-btn">+ Ajouter</button>
-                    </form>
-                </div>
-
-
-            </div>
         </div>
 
     </main>

@@ -1,11 +1,12 @@
 <?php
 require_once __DIR__ .'/../Models/recipe.php';
-        session_start();
+require_once __DIR__ .'/CategoryController.php';
+session_start();
 if(!isset($_SESSION['user_id'])){
     
-            header('Location: index.php');
-            exit();
-        }
+        header('Location: index.php');
+        exit();
+    }
 
 class RecipeController {
     private $recipeModel;
@@ -21,7 +22,11 @@ class RecipeController {
     }
 
     public function createRecipe(){
+        $catController = new CategoryController();
+        $cats = $catController->getAllCategories();
+
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
@@ -35,14 +40,18 @@ class RecipeController {
             header('Location: dashboard.php');
             exit();
         }
-        //require_once __DIR__ .'/../Views/user/addRecipe.php';
+        require_once __DIR__ .'/../Views/user/addRecipe.php';
     }
 
     public function updateRecipe(){
+
+        $catController = new CategoryController();
+        $cats = $catController->getAllCategories();
+        
         $id = $_GET['id'];
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
-            $id = $_POST['id'];
+            $id;
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
@@ -56,7 +65,7 @@ class RecipeController {
             exit();
         }
         $recipe = $this->recipeModel->getRecipeById($id);
-         require_once __DIR__ .'/../Views/user/editRecipe.php';
+        require_once __DIR__ .'/../Views/user/editRecipe.php';
 
     }
 
