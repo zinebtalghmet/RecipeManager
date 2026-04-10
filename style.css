@@ -2,14 +2,14 @@
 
 
 :root {
-    --primary: #4f46e5;
-    --primary-hover: #4338ca;
-    --primary-light: rgba(79, 70, 229, 0.12);
-    --bg: #f1f5f9;
+    --primary: #8B4513;
+    --primary-hover: #6d3410;
+    --primary-light: rgba(139, 69, 19, 0.10);
+    --bg: #faf6f1;
     --card: #ffffff;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
+    --text: #2d1810;
+    --muted: #7a6b63;
+    --border: #e8ddd4;
     --radius-xl: 18px;
     --radius-lg: 12px;
     --radius-md: 8px;
@@ -653,7 +653,7 @@ body>div:first-of-type>div>h2 {
     display: inline-flex;
     align-items: center;
     gap: .4rem;
-    padding: .6rem 1.25rem;
+    padding: .7rem 1.5rem;
     font-size: .9rem;
     font-weight: 700;
     font-family: inherit;
@@ -662,16 +662,40 @@ body>div:first-of-type>div>h2 {
     border-radius: 50px;
     text-decoration: none;
     transition: background var(--speed), transform var(--speed), box-shadow var(--speed);
-    box-shadow: 0 3px 10px rgba(79, 70, 229, .35);
+    box-shadow: 0 3px 10px rgba(139, 69, 19, .25);
     white-space: nowrap;
 }
 
 .btn-add:hover {
     background: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(79, 70, 229, .42);
+    box-shadow: 0 6px 16px rgba(139, 69, 19, .35);
     text-decoration: none;
     color: #fff;
+}
+
+.dash-filter-form {
+    margin-bottom: 1.5rem;
+}
+
+.dash-filter-select {
+    padding: .45rem 1rem;
+    font-size: .85rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--speed);
+    width: auto;
+}
+
+.dash-filter-select:hover,
+.dash-filter-select:focus {
+    border-color: var(--primary);
 }
 
 /* Prompt card grid */
@@ -711,7 +735,7 @@ body>div:first-of-type>div>h2 {
 .prompt-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-float);
-    border-color: #c7d2fe;
+    border-color: #d4b896;
 }
 
 .prompt-card-top {
@@ -783,7 +807,7 @@ body>div:first-of-type>div>h2 {
 }
 
 .edit-btn:hover {
-    background: #c7d2fe;
+    background: rgba(139, 69, 19, 0.18);
     text-decoration: none;
     color: var(--primary);
 }
@@ -820,7 +844,7 @@ body>div:first-of-type>div>h2 {
 .prompt-card-new:hover {
     border-color: var(--primary);
     color: var(--primary);
-    background: var(--primary-light);
+    background: rgba(139, 69, 19, 0.06);
 }
 
 .new-card-plus {

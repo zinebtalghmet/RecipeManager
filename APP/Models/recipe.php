@@ -66,11 +66,11 @@ class Recipe {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id){
-        $sql = 'INSERT INTO recipes(title, ingredients, instructions, time, portions, user_id, cat_id)
-                VALUES ( ?,?,?,?,?,?,?)';
+    public function creatRecipe($title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $user_id, $cat_id, $image){
+        $sql = 'INSERT INTO recipes(title, ingredients, instructions, prep_time, cook_time, portions, user_id, cat_id, image)
+                VALUES (?,?,?,?,?,?,?,?,?)';
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
+        $stmt->execute([$title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $user_id, $cat_id, $image]);
     }
 
     public function getRecipeById($id){
@@ -82,12 +82,20 @@ class Recipe {
 
 
 
-    public function update($id, $title, $ingredients, $instructions, $time, $portions, $cat_id){
-        $sql = 'UPDATE recipes
-        SET title = ?, ingredients = ?, instructions = ?, time = ?, portions = ?, cat_id = ?
-        WHERE id = ?';
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $cat_id,$id]);
+    public function update($id, $title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $cat_id, $image = null){
+        if($image){
+            $sql = 'UPDATE recipes
+            SET title = ?, ingredients = ?, instructions = ?, prep_time = ?, cook_time = ?, portions = ?, cat_id = ?, image = ?
+            WHERE id = ?';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $cat_id, $image, $id]);
+        } else {
+            $sql = 'UPDATE recipes
+            SET title = ?, ingredients = ?, instructions = ?, prep_time = ?, cook_time = ?, portions = ?, cat_id = ?
+            WHERE id = ?';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $cat_id, $id]);
+        }
     }
     public function delete($id){
         $sql = 'DELETE FROM recipes
