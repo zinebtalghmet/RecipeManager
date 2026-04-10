@@ -73,15 +73,21 @@ class Recipe {
         $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
     }
 
+        public function getRecipeById($id){
+            $sql='SELECT * FROM recipes WHERE id = ?';
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute([$id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 
 
 
     public function update($id, $title, $ingredients, $instructions, $time, $portions, $cat_id){
         $sql = 'UPDATE recipes
-                SET title = ?, ingredients = ?, time = ?, portions = ?, car_id = ?
-                WHERE id = ?';
+        SET title = ?, ingredients = ?, instructions = ?, time = ?, portions = ?, cat_id = ?
+        WHERE id = ?';
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$id, $title, $ingredients, $instructions, $time, $portions, $cat_id]);
+        $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $cat_id,$id]);
     }
 
 

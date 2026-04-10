@@ -22,12 +22,12 @@
             </div>
 
             <form method="POST" class="add-form">
-
+                <input type="hidden" name="id" value="<?php echo $recipe['id'];?> "
                 <div class="add-row">
                     <div class="add-field">
                         <label class="add-label">Titre</label>
                         <input type="text" name="title"
-                               value="<?php echo $recipes['title']; ?>"
+                               value="<?php echo $recipe['title']; ?>"
                                placeholder="le titre"
                                class="add-input">
                     </div>
@@ -37,6 +37,7 @@
                             <option value="">Selectionner une catégorie</option>
                             <?php foreach ($cats as $c) { ?>
                                 <option value="<?php echo $c['id']; ?>"
+                                    <?php if($c['id']==$recipe['cat_id']) echo 'selected';?>>
                                     <?php echo htmlspecialchars($c['name']); ?>>
                                 </option>
                             <?php } ?>
@@ -46,13 +47,13 @@
 
                 <div class="add-field add-field-full">
                     <label class="add-label">Ingrédients</label>
-                    <textarea name="ingredients" class="add-textarea" placeholder="// Écrivez votre ingrédients ici..."><?php echo htmlspecialchars($recipes['ingredients']); ?></textarea>
+                    <textarea name="ingredients" class="add-textarea" placeholder="// Écrivez votre ingrédients ici..."><?php echo htmlspecialchars($recipe['ingredients']); ?></textarea>
                     <label class="add-label">Instructions</label>
-                    <input type="text" name="instructions" placeholder="// Écrivez votre instructions ici..." class="add-input" value="<?php echo htmlspecialchars($recipes['instructions']); ?>">
+                    <input type="text" name="instructions" placeholder="// Écrivez votre instructions ici..." class="add-input" value="<?php echo htmlspecialchars($recipe['instructions']); ?>">
                     <label class="add-label">Tempte de préparation</label>
-                    <input type="text" name="instructions" placeholder="// Écrivez votre instructions ici..." class="add-input" value="<?php echo htmlspecialchars($recipes['time']); ?>">
+                    <input type="text" name="time" placeholder="// Écrivez votre time ici..." class="add-input" value="<?php echo htmlspecialchars($recipe['time']); ?>">
                     <label class="add-label">Portions</label>
-                    <input type="text" name="instructions" placeholder="// Écrivez votre instructions ici..." class="add-input" value="<?php echo htmlspecialchars($recipes['portions']); ?>">
+                    <input type="text" name="portions" placeholder="// Écrivez votre portions ici..." class="add-input" value="<?php echo htmlspecialchars($recipe['portions']); ?>">
                 </div>
 
                 <!-- Actions -->

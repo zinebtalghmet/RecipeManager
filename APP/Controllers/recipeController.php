@@ -22,7 +22,6 @@ class RecipeController {
 
     public function createRecipe(){
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
@@ -33,27 +32,16 @@ class RecipeController {
 
 
             $this->recipeModel->creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $category);
-
+            header('Location: dashboard.php');
             exit();
         }
-        require_once __DIR__ .'/../Views/user/addRecipe.php';
+        //require_once __DIR__ .'/../Views/user/addRecipe.php';
     }
 
-
-
-
-
-
-
-    
-
     public function updateRecipe(){
-
+        $id = $_GET['id'];
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-            $recipes = $this->recipeModel->getAllRecipe();
-
-
+            
             $id = $_POST['id'];
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
@@ -67,6 +55,9 @@ class RecipeController {
             header('Location: dashboard.php');
             exit();
         }
+        $recipe = $this->recipeModel->getRecipeById($id);
+         require_once __DIR__ .'/../Views/user/editRecipe.php';
+
     }
 
 
