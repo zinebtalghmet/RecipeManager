@@ -30,13 +30,21 @@ class RecipeController {
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
-            $time = $_POST['time'];
+            $prep_time = (int)$_POST['prep_time'];
+            $cook_time = (int)$_POST['cook_time'];
             $portions = $_POST['portions'];
             $user_id = $_SESSION['user_id'];
             $category = $_POST['category_id'];
 
+            $image = null;
+            if(isset($_FILES['image']) && $_FILES['image']['error'] === 0){
+                $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid('recipe_') . '.' . $ext;
+                move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../uploads/' . $filename);
+                $image = $filename;
+            }
 
-            $this->recipeModel->creatRecipe($title, $ingredients, $instructions, $time, $portions, $user_id, $category);
+            $this->recipeModel->creatRecipe($title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $user_id, $category, $image);
             header('Location: dashboard.php');
             exit();
         }
@@ -50,16 +58,25 @@ class RecipeController {
         
         $id = $_GET['id'];
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            
-            $id;
+
+            $id = $_POST['id'];
             $title = $_POST['title'];
             $ingredients = $_POST['ingredients'];
             $instructions = $_POST['instructions'];
-            $time = $_POST['time'];
+            $prep_time = (int)$_POST['prep_time'];
+            $cook_time = (int)$_POST['cook_time'];
             $portions = $_POST['portions'];
             $category = $_POST['category_id'];
 
-            $this->recipeModel->update($id, $title, $ingredients, $instructions, $time, $portions, $category);
+            $image = null;
+            if(isset($_FILES['image']) && $_FILES['image']['error'] === 0){
+                $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid('recipe_') . '.' . $ext;
+                move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../uploads/' . $filename);
+                $image = $filename;
+            }
+
+            $this->recipeModel->update($id, $title, $ingredients, $instructions, $prep_time, $cook_time, $portions, $category, $image);
 
             header('Location: dashboard.php');
             exit();
