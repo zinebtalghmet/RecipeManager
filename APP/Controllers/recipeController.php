@@ -16,15 +16,11 @@ class RecipeController {
     }
 
     public function index(){
-        
-        
         $recipes = $this->recipeModel->getAllRecipe();
         require_once __DIR__ .'/../Views/user/dashboard.php';
     }
 
     public function createRecipe(){
-
-        
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             $title = $_POST['title'];

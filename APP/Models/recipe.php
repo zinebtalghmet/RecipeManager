@@ -76,8 +76,6 @@ class Recipe {
 
 
 
-
-
     public function update($id, $title, $ingredients, $instructions, $time, $portions, $cat_id){
         $sql = 'UPDATE recipes
                 SET title = ?, ingredients = ?, time = ?, portions = ?, car_id = ?
