@@ -22,7 +22,6 @@
 
             <form method="POST" class="add-form" action="">
 
-                <!-- Title + Category side by side -->
                 <div class="add-row">
                     <div class="add-field">
                         <label class="add-label">titre</label>

@@ -72,5 +72,54 @@ class Recipe {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$title, $ingredients, $instructions, $time, $portions, $user_id, $cat_id]);
     }
+
+
+
+
+    public function update($id, $title, $ingredients, $instructions, $time, $portions, $cat_id){
+        $sql = 'UPDATE recipes
+                SET title = ?, ingredients = ?, time = ?, portions = ?, car_id = ?
+                WHERE id = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id, $title, $ingredients, $instructions, $time, $portions, $cat_id]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    public function delete($id){
+        $sql = 'DELETE FROM recipes
+                WHERE id = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+    }
 }
 ?>

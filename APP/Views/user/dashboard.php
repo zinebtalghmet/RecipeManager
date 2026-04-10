@@ -45,7 +45,7 @@
                 <div class="prompt-card-footer">
                     <div class="prompt-actions">
                         <?php if($_SESSION['user_id'] == $r['user_id']): ?>
-                            <a href="editRecipe.php?id=<?php echo $r['id'] ?>" class="action-btn edit-btn">Modifier</a>
+                            <a href="updateRecipe.php?id=<?php echo $r['id'] ?>" class="action-btn edit-btn">Modifier</a>
                             <a href="deleteRecipe.php?id=<?php echo $r['id'] ?>" class="action-btn delete-btn"
                                onclick="return confirm('Voulez-vous vraiment supprimer cette recette ?')">Supprimer</a>
                         <?php endif; ?>
